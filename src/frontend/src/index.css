@@ -1,0 +1,145 @@
+@font-face {
+  font-family: "DM Serif Display";
+  src: url("/assets/fonts/DMSerifDisplay-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0.97 0.005 60;
+    --foreground: 0.18 0.025 250;
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.025 250;
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.025 250;
+    --primary: 0.5 0.17 162;
+    --primary-foreground: 0.99 0 0;
+    --secondary: 0.93 0.015 162;
+    --secondary-foreground: 0.35 0.12 162;
+    --muted: 0.94 0.008 60;
+    --muted-foreground: 0.5 0.015 250;
+    --accent: 0.93 0.015 162;
+    --accent-foreground: 0.35 0.12 162;
+    --destructive: 0.52 0.22 25;
+    --destructive-foreground: 0.99 0 0;
+    --success: 0.52 0.17 145;
+    --success-foreground: 0.99 0 0;
+    --warning: 0.72 0.18 75;
+    --warning-foreground: 0.18 0.025 250;
+    --border: 0.88 0.012 60;
+    --input: 0.88 0.012 60;
+    --ring: 0.5 0.17 162;
+    --radius: 0.75rem;
+    --chart-1: 0.5 0.17 162;
+    --chart-2: 0.52 0.22 25;
+    --chart-3: 0.72 0.18 75;
+    --chart-4: 0.55 0.15 270;
+    --chart-5: 0.5 0.14 220;
+    --sidebar: 0.97 0.005 60;
+    --sidebar-foreground: 0.18 0.025 250;
+    --sidebar-primary: 0.5 0.17 162;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.93 0.015 162;
+    --sidebar-accent-foreground: 0.35 0.12 162;
+    --sidebar-border: 0.88 0.012 60;
+    --sidebar-ring: 0.5 0.17 162;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .bg-success {
+    background-color: oklch(var(--success));
+  }
+  .text-success {
+    color: oklch(var(--success));
+  }
+  .border-success {
+    border-color: oklch(var(--success));
+  }
+  .text-warning {
+    color: oklch(var(--warning));
+  }
+  .bg-warning {
+    background-color: oklch(var(--warning));
+  }
+
+  .payment-grid-bg {
+    background-image: linear-gradient(
+        oklch(0.88 0.012 60 / 0.4) 1px,
+        transparent 1px
+      ), linear-gradient(90deg, oklch(0.88 0.012 60 / 0.4) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .card-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .card-shine::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      oklch(1 0 0 / 0.06),
+      transparent
+    );
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+  }
+  .card-shine:hover::before {
+    left: 150%;
+  }
+}
